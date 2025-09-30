@@ -5,11 +5,14 @@ description = "Default template for PDM package"
 authors = [
     {name = "", email = ""},
 ]
-dependencies = ["langchain>=0.3.27", "langgraph>=0.6.8"]
+dependencies = ["langchain>=0.3.27", "langgraph>=0.6.8", "langchain-mcp-adapters>=0.1.10", "langchain-ollama>=0.3.8"]
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
 
+[tool.pdm.scripts]
+mcp = "mcp/server.py"
+agent = "agent/agent.py"
 
 [tool.pdm]
 distribution = false
