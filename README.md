@@ -21,14 +21,16 @@ Tool calling AI agent for dog nutrition recommendations.
 
 1. Download LLM: `ollama pull PetrosStav/gemma3-tools:12b`
 1. Install backend dependencies: `pdm install`
-1. Install frontend dependencies: `npm install` (in `frontend` dir)
+1. Install frontend dependencies: `cd frontend && npm install`
 
 
 ## Running
 
 - Start MCP server: `pdm run mcp`
-- Start agent: `pdm run agent`
-- Start frontend `npm run dev` (in `frontend` dir)
+- Start agent:
+    - Run directly (no API): `pdm run agent`
+    - Run API server (with LangGraph debug frontend): `pdm run server`
+- Start frontend: `cd frontend && npm run dev`
 
 
 ## License

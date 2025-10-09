@@ -5,7 +5,7 @@ description = "Default template for PDM package"
 authors = [
     {name = "", email = ""},
 ]
-dependencies = ["langchain>=0.3.27", "langgraph>=0.6.8", "langchain-mcp-adapters>=0.1.10", "langchain-ollama>=0.3.8"]
+dependencies = ["langchain>=0.3.27", "langgraph>=0.6.8", "langchain-mcp-adapters>=0.1.10", "langchain-ollama>=0.3.8", "langgraph-cli>=0.4.3", "langgraph-api>=0.4.38"]
 requires-python = "==3.13.*"
 readme = "README.md"
 license = {text = "MIT"}
@@ -13,6 +13,7 @@ license = {text = "MIT"}
 [tool.pdm.scripts]
 mcp = "mcp/server.py"
 agent = "agent/agent.py"
+server = "python -m langgraph_cli dev"
 
 [tool.pdm]
 distribution = false
