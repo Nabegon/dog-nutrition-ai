@@ -71,7 +71,7 @@ const ThreadScrollToBottom: FC = () => {
   return (
     <ThreadPrimitive.ScrollToBottom asChild>
       <TooltipIconButton
-        tooltip="Scroll to bottom"
+        tooltip="Nach unten scrollen"
         variant="outline"
         className="aui-thread-scroll-to-bottom absolute -top-12 z-10 self-center rounded-full p-4 disabled:invisible dark:bg-background dark:hover:bg-accent"
       >
@@ -93,7 +93,7 @@ const ThreadWelcome: FC = () => {
               exit={{ opacity: 0, y: 10 }}
               className="aui-thread-welcome-message-motion-1 text-2xl font-semibold"
             >
-              Hello there!
+              Hello!
             </m.div>
             <m.div
               initial={{ opacity: 0, y: 10 }}
@@ -102,7 +102,7 @@ const ThreadWelcome: FC = () => {
               transition={{ delay: 0.1 }}
               className="aui-thread-welcome-message-motion-2 text-2xl text-muted-foreground/65"
             >
-              How can I help you today?
+              Wie kann ich dir heute helfen?
             </m.div>
           </div>
         </div>
@@ -116,24 +116,24 @@ const ThreadWelcomeSuggestions: FC = () => {
     <div className="aui-thread-welcome-suggestions grid w-full gap-2 @md:grid-cols-2">
       {[
         {
-          title: "What's the weather",
-          label: "in San Francisco?",
-          action: "What's the weather in San Francisco?",
+          title: "Reicht das als Futter für heute?",
+          label: "Mein Hund wiegt 10kg, ich habe drei Katoffeln.",
+          action: "Reicht das als Futter für heute? Mein Hund wiegt 10kg, ich habe drei Katoffeln.",
         },
         {
-          title: "Explain React hooks",
-          label: "like useState and useEffect",
-          action: "Explain React hooks like useState and useEffect",
+          title: "Was muss ich einkaufen?",
+          label: "Ich möchte für 4 Wochen BARF vorbereiten.",
+          action: "Was muss ich einkaufen? Ich möchte für 4 Wochen BARF vorbereiten.",
         },
         {
-          title: "Write a SQL query",
-          label: "to find top customers",
-          action: "Write a SQL query to find top customers",
+          title: "Kann ich meinem Hund Käse geben?",
+          label: "Mein Hund mag das gerne.",
+          action: "Kann ich meinem Hund Käse geben? Mein Hund mag das gerne.",
         },
         {
-          title: "Create a meal plan",
-          label: "for healthy weight loss",
-          action: "Create a meal plan for healthy weight loss",
+          title: "Ich habe noch 500g Hühnerleber.",
+          label: "Kann ich die meinem Pudel als Futter geben?",
+          action: "Ich habe noch 500g Hühnerleber. Kann ich die meinem Pudel als Futter geben?",
         },
       ].map((suggestedAction, index) => (
         <m.div
@@ -179,11 +179,11 @@ const Composer: FC = () => {
       <ComposerPrimitive.Root className="aui-composer-root relative flex w-full flex-col rounded-3xl border border-border bg-muted px-1 pt-2 shadow-[0_9px_9px_0px_rgba(0,0,0,0.01),0_2px_5px_0px_rgba(0,0,0,0.06)] dark:border-muted-foreground/15">
         <ComposerAttachments />
         <ComposerPrimitive.Input
-          placeholder="Send a message..."
+          placeholder="Nachricht senden..."
           className="aui-composer-input mb-1 max-h-32 min-h-16 w-full resize-none bg-transparent px-3.5 pt-1.5 pb-3 text-base outline-none placeholder:text-muted-foreground focus:outline-primary"
           rows={1}
           autoFocus
-          aria-label="Message input"
+          aria-label="Nachricht eingeben"
         />
         <ComposerAction />
       </ComposerPrimitive.Root>
@@ -199,13 +199,13 @@ const ComposerAction: FC = () => {
       <ThreadPrimitive.If running={false}>
         <ComposerPrimitive.Send asChild>
           <TooltipIconButton
-            tooltip="Send message"
+            tooltip="Nachricht senden"
             side="bottom"
             type="submit"
             variant="default"
             size="icon"
             className="aui-composer-send size-[34px] rounded-full p-1"
-            aria-label="Send message"
+            aria-label="Nachricht senden"
           >
             <ArrowUpIcon className="aui-composer-send-icon size-5" />
           </TooltipIconButton>
@@ -219,7 +219,7 @@ const ComposerAction: FC = () => {
             variant="default"
             size="icon"
             className="aui-composer-cancel size-[34px] rounded-full border border-muted-foreground/60 hover:bg-primary/75 dark:border-muted-foreground/90"
-            aria-label="Stop generating"
+            aria-label="Generierung beenden"
           >
             <Square className="aui-composer-cancel-icon size-3.5 fill-white dark:fill-black" />
           </Button>
@@ -343,12 +343,12 @@ const EditComposer: FC = () => {
 
         <div className="aui-edit-composer-footer mx-3 mb-3 flex items-center justify-center gap-2 self-end">
           <ComposerPrimitive.Cancel asChild>
-            <Button variant="ghost" size="sm" aria-label="Cancel edit">
-              Cancel
+            <Button variant="ghost" size="sm" aria-label="Bearbeitung abbrechen">
+              Abbrechen
             </Button>
           </ComposerPrimitive.Cancel>
           <ComposerPrimitive.Send asChild>
-            <Button size="sm" aria-label="Update message">
+            <Button size="sm" aria-label="Update Nachricht">
               Update
             </Button>
           </ComposerPrimitive.Send>
