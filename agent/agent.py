@@ -4,6 +4,7 @@ from langgraph.prebuilt import create_react_agent
 from langgraph.graph.state import CompiledStateGraph
 from langchain_core.runnables.config import RunnableConfig
 from langchain_ollama import ChatOllama
+from agent.prompt import system_prompt
 
 llm = ChatOllama(model="PetrosStav/gemma3-tools:12b", base_url="http://localhost:11434")
 mcp_client = MultiServerMCPClient(
@@ -12,9 +13,9 @@ mcp_client = MultiServerMCPClient(
     }
 )
 
-async def make_graph(config: RunnableConfig|None = None) -> CompiledStateGraph:
+async def make_graph(config: RunnableConfig | None = None) -> CompiledStateGraph:
     tools = await mcp_client.get_tools()
-    return create_react_agent(llm, tools)
+    return create_react_agent(llm, tools, prompt=system_prompt)
 
 async def main():
     graph = await make_graph()
