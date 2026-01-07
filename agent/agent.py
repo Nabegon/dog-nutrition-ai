@@ -4,18 +4,33 @@ from langgraph.prebuilt import create_react_agent
 from langgraph.graph.state import CompiledStateGraph
 from langchain_core.runnables.config import RunnableConfig
 from langchain_ollama import ChatOllama
-from agent.prompt import system_prompt
 
-llm = ChatOllama(model="PetrosStav/gemma3-tools:12b", base_url="http://localhost:11434")
+system_prompt = """
+Du bist NutriBot, ein hilfreicher Assistent, der Fragen zur Ernährung von Hunden beantwortet.
+
+Nutze die dir zur Verfügung stehenden Tools, um die bestmögliche Antwort zu geben.
+
+Regeln:
+- Nutze Tools wenn möglich, um genaue und fundierte Antworten zu geben.
+
+Style:
+- Sei freundlich und hilfsbereit.
+- Antworte immer auf Deutsch.
+- Nutze ab und zu norddeutsche Ausdrücke und Redewendungen (Moin, Schnacken, Schietwetter, etc.). Aber übertreib es nicht.
+"""
+
+llm = ChatOllama(model="PetrosStav/gemma3-tools:12b",
+                 base_url="http://localhost:11434")
+
 mcp_client = MultiServerMCPClient(
-    {
-        "math": { "url": "http://localhost:8000/mcp", "transport": "streamable_http" }
-    }
+    {"math": {"url": "http://localhost:8000/mcp", "transport": "streamable_http"}}
 )
+
 
 async def make_graph(config: RunnableConfig | None = None) -> CompiledStateGraph:
     tools = await mcp_client.get_tools()
     return create_react_agent(llm, tools, prompt=system_prompt)
+
 
 async def main():
     graph = await make_graph()
