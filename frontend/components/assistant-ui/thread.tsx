@@ -41,9 +41,11 @@ export const Thread: FC = () => {
           style={{
             ["--thread-max-width" as string]: "44rem",
             backgroundImage: 'url("/dog_akitainu.png")',
+            backgroundColor: "rgba(255,255,255,0.6)",
+            backgroundBlendMode: "lighten",
             backgroundPosition: "center",
             backgroundSize: "auto",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
           }}
         >
           <ThreadPrimitive.Viewport className="aui-thread-viewport relative flex flex-1 flex-col overflow-x-auto overflow-y-scroll px-4">
