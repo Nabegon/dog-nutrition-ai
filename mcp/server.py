@@ -11,18 +11,8 @@ def search(query: str) -> str:
     return results
 
 @mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    return a + b
-
-@mcp.tool()
-def multiply(a: int, b: int) -> int:
-    """Multiply two numbers"""
-    return a * b
-
-@mcp.tool()
-def leseUrl(url) -> str:
-    """Lese den Inhalt einer URL und gib ihn als String zurück"""
+def readUrl(url) -> str:
+    """Read the content of a URL and return it as a string"""
     import requests
     response = requests.get(url)
     return response.text
