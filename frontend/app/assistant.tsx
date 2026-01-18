@@ -10,10 +10,9 @@ export function Assistant() {
   const runtime = useLangGraphRuntime({
     stream: async function* (messages, { initialize, command }) {
       const { externalId } = await initialize();
-      if (!externalId) throw new Error("Thread not found");
 
       const generator = await sendMessage({
-        threadId: externalId,
+        threadId: externalId!,
         messages,
         command,
       });
